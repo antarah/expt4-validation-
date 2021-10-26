@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+	<head>
+	<title>Register Here!!</title>
+	<link rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+	<form onsubmit="return submitted()">
+	<br>
+	<h2>REGISTERATION FORM</h2>
+	<label>Username:</label>
+	<input id="username" placeholder="Enter Username" maxlength="15" required><br>
+	<label>Email:</label>
+	<input id="email" type="email" placeholder="Email" required><br>
+	
+	<label>Password:</label>
+	<input id="password" type="password" placeholder="Enter a Password" minlength="8"  title="Please include at least 1 uppercase character, 1 lowercase character, and 1 number." required><br>
+	
+	<label>Birth Date:</label>
+	<input id="birthdate" type="date" placeholder="Enter your Birth Date" required><br>
+	
+	<label>City:</label>
+	<select id="city" required>
+	<option value="">Please select a city</option>
+	<option value="Mumbai">Mumbai</option>
+	<option value="Delhi">Delhi</option>
+	<option value="Pune">Pune</option>
+	<option value="Banglore">Banglore</option>
+    <option value="Hyderabad">Hyderabad</option>
+	</select><br>
+
+	<label>Programming Languages known:</label>
+	<input type="checkbox" onclick="language('C')">C
+	<input type="checkbox" onclick="language('C++')">C++
+	<input type="checkbox" onclick="language('Java')">Java
+	<input type="checkbox" onclick="language('JavaScript')">JavaScript
+	<input type="checkbox" onclick="language('Python')">Python
+	<div>
+	<button type="submit">Register</button>
+	</div>
+	</form>
+	<script>
+	var languages=[];
+	function submitted(){
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	var email=document.getElementById("email").value;
+	var date=document.getElementById("birthdate").value;
+	var city=document.getElementById("city").value;
+	var passReg = {upper: /[A-Z]/,lower: /[a-z]/,number: /[0-9]/,space: /\s/};
+	if (!(passReg.upper.test(password) && passReg.lower.test(password) && passReg.number.test(password) && !passReg.space.test(password))){
+	alert("At least one uppercase letter, one lowercase letter and one number Required!!");
+	return false;
+	}else if (!email.match(/.+@.+\..+/)) {
+	alert("You have entered an invalid email address!");
+	return false;
+	}else{
+	var s="";
+	s+=("Username: "+username);
+	s+=("\nEmail: "+email);
+	s+=("\nPassword: "+password);
+	s+=("\nBirth date: "+date);
+	s+=("\nCity: "+city);
+	s+=("\nProgramming Languages known: ");
+	languages.sort();
+	s+=languages;
+	alert(s);
+	}
+	}
+	function language(val){
+	if(languages.indexOf(val)<0){
+	languages.push(val);
+	}else{
+	languages.pop(languages.indexOf("val"));
+	}
+	}
+	</script>
+	</body>
+
+</html>
+<style>
+	
+	h2{
+	
+	background-color: rgb(127, 225, 255);
+	color: black;
+	padding: 10px;
+	margin: 10px ;
+	
+	}
+
+	label{
+	padding: 10px 5px;
+	font-weight: bold;
+
+	width: 50px;
+	margin-bottom: 0.5em;
+	}
+	input,select,button{
+	padding: 12px;
+	margin:10px 0;
+	width:15%;
+	border: 5px;
+	border-radius: 2px;
+	}
+	input[type="checkbox"]{
+	margin:5px;
+	width:auto;
+	}
+	button{
+	 background-color: #0088cc;
+     border: 1px solid #0088cc;
+     border-radius: 1px;
+     display: inline-block;
+     font-weight: normal;
+     line-height: 1.2;
+	 color: white;
+	 font-size: 18px;
+	 margin:20px;
+	position:relative;
+	left: 20px;
+	 
+	}
+
+	button:active,
+    button:focus,
+    button:hover {
+     background-color: #005580;
+     border-color: #005580;
+     color: #ffffff;
+     text-decoration: none;
+    }
+
+    button:active {
+      box-shadow: inset 0 0.15625em 0.25em rgba(0, 0, 0, 0.15), 0 1px 0.15625em rgba(0, 0, 0, 0.05);
+  }
+
+</style>
